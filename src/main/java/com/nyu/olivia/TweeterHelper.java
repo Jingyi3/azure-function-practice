@@ -246,7 +246,7 @@ public class TweeterHelper {
 
     //get all follower ID and return a String
     public  String getFollowerID(String table) {
-        StringBuilder sb = new StringBuilder("All followers' twitterID: %n");
+        StringBuilder sb = new StringBuilder("All followers' twitterID: \n");
         try {
             String queryIDSQL = "select * from " + table;
             Statement statement = conn.createStatement();
@@ -256,7 +256,7 @@ public class TweeterHelper {
                 followerCounter++;
                 String twitterID = resultSet.getString("twitterID");
                 //append result
-                sb.append("Follower ").append(followerCounter).append(" : ").append(twitterID).append("%n");
+                sb.append("Follower ").append(followerCounter).append(" : ").append(twitterID).append("\n");
             }
             resultSet.close();
             statement.close();
@@ -265,7 +265,7 @@ public class TweeterHelper {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            sb.append("%nshow followers' twitterID fail!");
+            sb.append("\nshow followers' twitterID fail!");
             closeCon(conn);
             return sb.toString();
         }
@@ -330,7 +330,7 @@ public class TweeterHelper {
 
     //get all tweet from a follower ID return String
     public  String getTweetsFromID(String table, String twitterID) {
-        StringBuilder sb = new StringBuilder("All tweets from user ").append(twitterID).append(" :%n");
+        StringBuilder sb = new StringBuilder("All tweets from user ").append(twitterID).append(" :\n");
         try {
             //select tweet from tweets_demo where twitterID=1181277758854488064;
             String queryIDSQL = "select tweet from " + table + " where twitterID=" + twitterID;
@@ -342,8 +342,8 @@ public class TweeterHelper {
                 tweetCounter++;
                 String tweet = resultSet.getString("tweet");
                 //print result
-                sb.append("Tweet ").append(tweetCounter).append(" :%n");
-                sb.append(tweet).append("%n");
+                sb.append("Tweet ").append(tweetCounter).append(" :n");
+                sb.append(tweet).append("\n");
             }
             resultSet.close();
             statement.close();
